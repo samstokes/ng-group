@@ -20,12 +20,31 @@ module.exports = function (grunt) {
           unused: "vars"
         }
       }
+    },
+    karma: {
+      unit: {
+        options: {
+          files: [
+            'bower_components/angular/angular.js',
+            'src/**/*.js',
+
+            'bower_components/angular-mocks/angular-mocks.js',
+            'test/**/*.js'
+          ]
+        },
+        frameworks: ['jasmine'],
+        browsers: ['PhantomJS'],
+        reporters: ['progress'],
+        singleRun: true
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerTask('check', ['jshint']);
+  grunt.registerTask('test', ['karma']);
 
-  grunt.registerTask('default', ['check']);
+  grunt.registerTask('default', ['check', 'test']);
 };
