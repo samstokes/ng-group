@@ -1,0 +1,19 @@
+{
+  "name": "ng-group",
+  "version": "0.0.0",
+  "authors": [
+    "Sam Stokes <me@samstokes.co.uk>"
+  ],
+  "license": "MIT",
+  "main": "src/ngGroup.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "package.json",
+    "Gruntfile.js",
+    "test"
+  ],
+  "devDependencies": {
+  }
+}
