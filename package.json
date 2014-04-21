@@ -1,0 +1,10 @@
+{
+  "name": "ng-group",
+  "version": "0.0.0",
+  "main": "src/ngGroup.js",
+  "scripts": {},
+  "author": "Sam Stokes <me@samstokes.co.uk>",
+  "license": "MIT",
+  "devDependencies": {
+  }
+}
