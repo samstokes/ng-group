@@ -159,7 +159,22 @@ If you have any problems using this, please
 [submit an issue on Github](https://github.com/samstokes/ng-group/issues/new)
 and I will try to help.
 
-Pull requests and constructive criticism also gratefully accepted.
+### Developing
+
+Pull requests and constructive criticism gratefully accepted.
+
+To hack on this, you'll need
+[npm](https://www.npmjs.org/),
+[bower](http://bower.io/) and
+[grunt](http://gruntjs.com/).  Then:
+
+ 1. `npm install`
+ 2. `bower install`
+ 3. `grunt` &ndash; this will:
+    * [JSHint](http://www.jshint.com/) the code
+    * run the [Jasmine](http://jasmine.github.io/) unit tests
+
+I'll be more likely to accept a pull request that includes tests :)
 
 
 Author
