@@ -58,6 +58,43 @@ Angular's two-way data-binding will work as normal.  If you remove an item from
 the array, it will be removed from the view; if it was the only item in its
 group, the group will be removed as well.
 
+### Installing
+
+ 1. Add `ngGroup.js` to your app.
+
+    Copy
+    [src/ngGroup.js](https://github.com/samstokes/ng-group/raw/master/src/ngGroup.js)
+    into your app.
+
+ 2. Load `ngGroup.js` via a `script` tag.  *N.B.* it must be loaded *after*
+    Angular.js, but *before* your app code.
+
+    ```html
+    <script src="path/to/angular.js"></script>
+    <script src="path/to/ngGroup.js"></script> <!-- add this -->
+    <script src="YourApp.js"></script>
+    ```
+
+ 3. Add the `ng.group` module to your app's dependencies:
+
+    ```javascript
+    var app = angular.module('YourApp', [
+        'ng.group'                             // add this
+    ]);
+
+    app.controller('YourCtrl', function () {
+      // ...
+    });
+    ```
+
+ 4. Now you can use the `groupBy` filter in your views:
+
+    ```html
+    <div ng-repeat="placePeople in people | groupBy:'home':'peopleByHome'">
+      <!-- ... -->
+    </div>
+    ```
+
 ### Details
 
  * **Group field:** The first argument to the filter is the name of the
