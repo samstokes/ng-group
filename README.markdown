@@ -64,11 +64,11 @@ of the above example on CodePen.
 
 ### Installing
 
- 1. Add `ngGroup.js` to your app.
-
-    Copy
-    [src/ngGroup.js](https://github.com/samstokes/ng-group/raw/master/src/ngGroup.js)
-    into your app.
+ 1. Add `ngGroup.js` to your app:
+    * If you use [Bower](http://bower.io), just `bower install ng-group`.
+    * otherwise, copy
+      [src/ngGroup.js](https://github.com/samstokes/ng-group/raw/master/src/ngGroup.js)
+      into your app.
 
  2. Load `ngGroup.js` via a `script` tag.  *N.B.* it must be loaded *after*
     Angular.js, but *before* your app code.
