@@ -13,6 +13,7 @@
     "bower_components",
     "package.json",
     "Gruntfile.js",
+    "tasks",
     "TODO",
     "example",
     "test",
