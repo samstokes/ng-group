@@ -1,6 +1,6 @@
 {
   "name": "ng-group",
-  "version": "0.0.0",
+  "version": "0.9.0",
   "description": "An Angular.js filter for grouping items in an array by one of their fields.",
   "main": "src/ngGroup.js",
   "scripts": {},
