@@ -20,7 +20,14 @@ module.exports = function (grunt) {
 
   function tagFromBowerVersion() {
     grunt.config.requires('bower.version');
-    var tag = 'v' + grunt.config.get('bower.version');
+    var bowerVersion = grunt.config.get('bower.version');
+    var npmVersion = grunt.config.get('pkg.version');
+
+    if (npmVersion && npmVersion !== bowerVersion) {
+      grunt.warn('Versions in package.json (' + npmVersion + ') and bower.json (' + bowerVersion + ') do not match!');
+    }
+
+    var tag = 'v' + bowerVersion;
     grunt.log.debug('Version tag from bower.json: ' + tag);
     return tag;
   }
