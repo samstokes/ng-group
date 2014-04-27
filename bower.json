@@ -13,7 +13,8 @@
     "package.json",
     "Gruntfile.js",
     "example",
-    "test"
+    "test",
+    "coverage"
   ],
   "dependencies": {
     "angular": "*"

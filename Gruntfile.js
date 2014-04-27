@@ -34,8 +34,19 @@ module.exports = function (grunt) {
         },
         frameworks: ['jasmine'],
         browsers: ['PhantomJS'],
-        reporters: ['progress'],
-        singleRun: true
+        reporters: ['progress', 'coverage'],
+        singleRun: true,
+
+        coverageReporter: {
+          reporters: [
+            {type: 'html', dir: 'coverage/'},
+            {type: 'text-summary'} // to stdout
+          ]
+        },
+
+        preprocessors: {
+          'src/**/*.js': ['coverage']
+        }
       }
     }
   });
