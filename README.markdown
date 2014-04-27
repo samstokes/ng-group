@@ -59,7 +59,7 @@ the array, it will be removed from the view; if it was the only item in its
 group, the group will be removed as well.
 
 See a
-[working, editable version](http://codepen.io/samstokes/pen/jIusq)
+[working, editable version](http://codepen.io/samstokes/pen/jIusq?editors=101)
 of the above example on CodePen.
 
 ### Installing
