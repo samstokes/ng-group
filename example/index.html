@@ -1,0 +1,45 @@
+<!doctype html>
+<html data-ng-app="GroupByDemo">
+  <head>
+    <title>ng-group demo</title>
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="../src/ngGroup.js"></script>
+    <script src="GroupByDemo.js"></script>
+  </head>
+  <body data-ng-controller="FellowshipCtrl">
+    <form action="#">
+      <label for="name">Name</label>
+      <input id="name" data-ng-model="newPerson.name">
+      <label for="home">Home</label>
+      <input id="home" data-ng-model="newPerson.home">
+      <button data-ng-click="addPerson()">Add</button>
+    </form>
+    <h1>Members of the Fellowship</h1>
+    <div data-ng-repeat="placePeople in people | groupBy:'home':'peopleByHome'">
+      <h2>{{placePeople.home}}</h2>
+      <ul>
+        <li data-ng-repeat="person in placePeople.items">
+          {{person.name}}
+          <a href="#" data-ng-click="removePerson(person)">Remove</a>
+        </li>
+      </ul>
+    </div>
+    <h1>Sorted</h1>
+    <!--
+      - Demonstrates sorting both before and after grouping.
+      - We sort before grouping to sort places alphabetically, and to sort
+      - people by name alphabetically within their groups.
+      - We sort again after grouping to put the places with most people first.
+      -->
+    <div data-ng-repeat="placePeople in people | orderBy:['home', 'name'] | groupBy:'home':'peopleByHome' | orderBy:'-items.length'">
+      <h2>{{placePeople.home}}</h2>
+      <ul>
+        <li data-ng-repeat="person in placePeople.items">
+          {{person.name}}
+          <a href="#" data-ng-click="removePerson(person)">Remove</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
