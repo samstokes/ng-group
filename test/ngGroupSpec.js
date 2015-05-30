@@ -120,7 +120,7 @@ describe('ng.group', function () {
       });
     });
 
-    it('should work with object methods too', function () {
+    it('should work with object methods', function () {
       function Person(data) {
         for (var k in data) this[k] = data[k];
       }
@@ -136,19 +136,41 @@ describe('ng.group', function () {
       ].map(function (data) { return new Person(data); });
 
       function town(name) {
-        return jasmine.objectContaining({uptown: name});
+        return jasmine.objectContaining({'uptown()': name});
       }
 
-      var filtered = groupByFilter(people, 'uptown');
+      var filtered = groupByFilter(people, 'uptown()');
 
       expect(filtered).toContain(town('LONDON'));
       var LONDONers = filtered.filter(function (townsAndPeople) {
-        return townsAndPeople.uptown === 'LONDON';
+        return townsAndPeople['uptown()'] === 'LONDON';
       })[0];
       expect(LONDONers.items).toContain(personNamed('Sam'));
       expect(LONDONers.items).toContain(personNamed('Alex'));
     });
-
+    
+    it('should work with nested fields', function () {
+      var people = [
+        {name: 'Bob', homeAddress: { town: 'New York City'} },
+        {name: 'Sam', homeAddress: { town: 'London'} },
+        {name: 'Alice', homeAddress: { town: 'New York City'} },
+        {name: 'Alex', homeAddress: { town: 'London'} },
+        {name: 'Dave', homeAddress: { town: 'San Francisco'} }
+      ];
+      
+      function town(name) {
+        return jasmine.objectContaining({'homeAddress.town': name});
+      }
+      
+      var filtered = groupByFilter(people, 'homeAddress.town');
+      
+      expect(filtered).toContain(town('London'));
+      var Londoners = filtered.filter(function (townsAndPeople) {
+        return townsAndPeople['homeAddress.town'] === 'London';
+      })[0];
+      expect(Londoners.items).toContain(personNamed('Sam'));
+      expect(Londoners.items).toContain(personNamed('Alex'));
+    });
 
     describe('caching', function () {
       var men = [

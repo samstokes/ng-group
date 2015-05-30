@@ -5,21 +5,7 @@
 (function filters() {
   'use strict';
 
-
-  function getProperty(value, propName) {
-    var property = value[propName];
-    var propValue;
-    if (typeof(property) === 'function') {
-      propValue = property.call(value);
-    } else {
-      propValue = property;
-    }
-    return propValue;
-  }
-
-
   angular.module('ng.group', [])
-
 
   /*
    * Group the input objects by a named field: e.g.
@@ -34,7 +20,7 @@
    * return the same objects, so that ng-repeat's digest cycle will correctly
    * recognise the output has not changed.
    */
-  .filter('groupBy', function () {
+  .filter('groupBy', ['$parse', function ($parse) {
     var poolCache = {};
     poolCache.poolFor = function poolFor(memoKey, groupField) {
       var groupPool;
@@ -63,7 +49,7 @@
       this.poolGen = 0;
     }
     GroupPool.prototype.addItem = function addItem(item) {
-      var groupValue = getProperty(item, this.groupField);
+      var groupValue = $parse(this.groupField)(item);
       var group;
       if (this.hasOwnProperty(groupValue)) group = this[groupValue];
       if (group === undefined) {
@@ -117,5 +103,5 @@
 
       return filtered;
     };
-  });
+  }]);
 })();
